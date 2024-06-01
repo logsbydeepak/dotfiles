@@ -26,6 +26,4 @@ vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 vim.keymap.set("v", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>p", '"+p')
 
--- write a keymap to closer current buffers
 vim.keymap.set("n", "<leader>q", ":bw<CR>")
-
