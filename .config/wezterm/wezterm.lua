@@ -7,7 +7,6 @@ config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 config.font = wezterm.font {
   family = 'JetBrainsMono Nerd Font',
-  weight = 'Medium',
 }
 
 return config
