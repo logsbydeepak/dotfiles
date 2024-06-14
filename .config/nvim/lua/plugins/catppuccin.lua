@@ -7,6 +7,12 @@ return {
     config = function()
       require("catppuccin").setup({
         flavour = "mocha",
+        integrations = {
+          neotree = true,
+          telescope = {
+            enabled = true,
+          }
+        }
       })
 
       vim.o.termguicolors = true
