@@ -22,7 +22,8 @@ vim.opt.spelllang = "en_us"
 vim.opt.wrap = true
 vim.opt.linebreak = true
 
-vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
-vim.keymap.set("v", "<leader>y", '"+y')
-vim.keymap.set("n", "<leader>p", '"+p')
+vim.opt.clipboard = "unnamedplus"
 
+vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
