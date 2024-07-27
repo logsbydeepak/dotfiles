@@ -1,5 +1,4 @@
 return {
-  { "leafOfTree/vim-svelte-plugin" },
   {
     "williamboman/mason.nvim",
     lazy = false,
@@ -39,10 +38,7 @@ return {
     end,
   },
   {
-    "windwp/nvim-ts-autotag",
-    opts = {},
-  },
-  {
+    lazy = true,
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     opts = {},
