@@ -2,5 +2,5 @@
 
 ## Usage
 1. `brew install stow`
-2. `stow .config $HOME/.config`
+2. `stow -t $HOME/.config .config`
 
