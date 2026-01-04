@@ -27,8 +27,18 @@ eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
 eval "$(atuin init zsh)"
 
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
-
+export FZF_DEFAULT_OPTS="
+--color=fg:#cdcdcd
+--color=bg:#141415
+--color=hl:#f3be7c
+--color=fg+:#aeaed1
+--color=bg+:#252530
+--color=hl+:#f3be7c
+--color=border:#606079
+--color=header:#6e94b2
+--color=gutter:#141415
+--color=spinner:#7fa563
+--color=info:#f3be7c
+--color=pointer:#aeaed1
+--color=marker:#d8647e
+--color=prompt:#bb9dbd"
