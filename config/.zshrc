@@ -7,6 +7,9 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
+autoload -Uz compinit
+compinit
+
 zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-completions
 
@@ -26,6 +29,7 @@ eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
 eval "$(atuin init zsh)"
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 export FZF_DEFAULT_OPTS="
 --color=fg:#cdcdcd
