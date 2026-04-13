@@ -18,3 +18,4 @@
 - fzf
 - bat
 - lazygit
+- jq
