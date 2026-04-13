@@ -1,12 +1,17 @@
 # dotfiles
 
+## Installation
+`brew install stow`
+
 ## Usage
-1. `brew install stow`
-2. `stow -t $HOME/.config config`
+- `stow -t $HOME */` for all
+- `stow -t $HOME nvim` for individual
+
 
 ## cli
 - fnm
 - atuin
 - nvm
 - fzf
-
+- bat
+- lazygit
