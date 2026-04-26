@@ -19,3 +19,5 @@
 - bat
 - lazygit
 - jq
+- ripgrep
+- eza
