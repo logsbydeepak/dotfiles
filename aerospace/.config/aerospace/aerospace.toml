@@ -10,7 +10,7 @@ config-version = 2
 after-startup-command = []
 
 # Start AeroSpace at login
-start-at-login = false
+start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -216,10 +216,12 @@ on-mode-changed = []
     alt-shift-k = ['join-with up', 'mode main']
     alt-shift-l = ['join-with right', 'mode main']
 
-[[on-window-detected]]
-    if.app-id = 'com.apple.Preview'
-    run = 'layout floating'
 
 [[on-window-detected]]
     if.app-id = 'com.apple.finder'
-    run = 'layout floating'
+    run = ['layout floating', 'move-node-to-workspace 5']
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Preview'
+    run = ['layout floating', 'move-node-to-workspace 6']
+

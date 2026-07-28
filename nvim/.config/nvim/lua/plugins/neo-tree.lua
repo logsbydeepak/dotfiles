@@ -9,8 +9,8 @@ return {
   config = function()
     require("neo-tree").setup({
       source_selector = {
-        winbar = true,
-        statusline = true
+        -- winbar = true,
+        -- statusline = true
       },
       popup_border_style = "rounded"
     })

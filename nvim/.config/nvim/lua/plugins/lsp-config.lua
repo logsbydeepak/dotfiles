@@ -9,32 +9,72 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     lazy = false,
+    dependencies = { "mason.nvim" },
     opts = {
-      auto_install = true,
+      ensure_installed = {
+        "lua_ls",
+        "rust_analyzer",
+        "gopls",
+        "ts_ls",
+        "html",
+        "tailwindcss",
+        "astro",
+        "cssls",
+        "clangd",
+        "ruff",
+      },
+      automatic_enable = true,
     },
   },
   {
     "neovim/nvim-lspconfig",
     lazy = false,
+    dependencies = { "hrsh7th/cmp-nvim-lsp" },
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      require("mason-lspconfig").setup {
-        ensure_installed = { "lua_ls", "rust_analyzer", "gopls", "ts_ls", "html", "tailwindcss", "astro", "cssls", "clangd", "ruff" },
-        handlers = {
-          function(server_name)
-            require("lspconfig")[server_name].setup {
-              capabilites = capabilities,
-            }
-          end,
-        }
-      }
 
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-      vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, {})
-      vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
+      -- Apply capabilities to every server (nvim 0.11+ API)
+      vim.lsp.config("*", {
+        capabilities = capabilities,
+      })
+
+      -- Per-server overrides
+      vim.lsp.config("lua_ls", {
+        settings = {
+          Lua = {
+            diagnostics = { globals = { "vim" } },
+          },
+        },
+      })
+
+      -- LSP keymaps: buffer-local, set only when a server attaches
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local opts = { buffer = args.buf }
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+          vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
+          vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
+          vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+          vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+          vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+          vim.keymap.set("n", "[d", function()
+            vim.diagnostic.jump({ count = -1, float = true })
+          end, opts)
+          vim.keymap.set("n", "]d", function()
+            vim.diagnostic.jump({ count = 1, float = true })
+          end, opts)
+        end,
+      })
+
+      -- Diagnostics UI
+      vim.diagnostic.config({
+        virtual_text = true,
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+        severity_sort = true,
+        float = { border = "rounded", source = true },
+      })
     end,
   },
   {

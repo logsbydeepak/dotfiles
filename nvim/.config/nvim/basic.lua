@@ -1,7 +1,6 @@
 vim.g.mapleader = " "
 
-vim.opt.spelllang = "en_us"
-vim.opt.spell = true
+vim.opt.spell = false
 vim.opt.signcolumn = "yes"
 vim.o.autoread = true
 
@@ -16,8 +15,6 @@ vim.opt.termguicolors = true
 
 vim.opt.colorcolumn = "80"
 vim.opt.scrolloff = 8
-
-vim.opt.spelllang = "en_us"
 
 vim.opt.wrap = true
 vim.opt.linebreak = true

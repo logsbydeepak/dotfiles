@@ -21,3 +21,6 @@
 - jq
 - ripgrep
 - eza
+- lazydocker
+- dtop
+

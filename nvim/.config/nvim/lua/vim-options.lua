@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 
 vim.opt.spelllang = "en_us"
-vim.opt.spell = true
+vim.opt.spell = false
 vim.opt.signcolumn = "yes"
 vim.o.autoread = true
 
@@ -17,7 +17,13 @@ vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80"
 vim.opt.scrolloff = 8
 
-vim.opt.spelllang = "en_us"
+-- Enable spell check only for prose filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "text", "gitcommit", "tex" },
+  callback = function()
+    vim.opt_local.spell = true
+  end,
+})
 
 vim.opt.wrap = true
 vim.opt.linebreak = true
